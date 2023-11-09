@@ -29,35 +29,34 @@ let multi = document.querySelector('#multi');
 let division = document.querySelector('#division')
 
 function formatNumber(number) { //３桁ごとにカンマをつける
-    // return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     return number.toLocaleString(undefined, { maximumFractionDigits: 10 });
 }
 function del(number) { //カンマを削除
     return number.replace(/,/g, '');
 }
 
-function calculator (num) { //入力した値をspanに表示
+function calculator(num) { //入力した値をspanに表示
     let currentValue = del(total.textContent);
-    if((currentValue === '0' || flg === true) && cnt ===1) { //1桁目を表示
+    if ((currentValue === '0' || flg === true) && cnt === 1) { //1桁目を表示
         total.textContent = num.textContent;
         flg = false;
         btn = 0;
-    } else { 
-        if(cnt ===1) { //少数点がない時に桁上がりしながら表示
-        let newValue = parseFloat(currentValue) *10 + parseFloat(num.textContent);
-        total.textContent = formatNumber(newValue)
-        btn = 0;
+    } else {
+        if (cnt === 1) { //少数点がない時に桁上がりしながら表示
+            let newValue = parseFloat(currentValue) * 10 + parseFloat(num.textContent);
+            total.textContent = formatNumber(newValue)
+            btn = 0;
         } else { //小数点がある時
-            if(num.textContent === '0') { //入力された数が0だった時
-                let newValue = currentValue  + '0';
+            if (num.textContent === '0') { //入力された数が0だった時
+                let newValue = currentValue + '0';
                 cnt *= 10;
                 total.textContent = newValue;
                 btn = 0;
             } else {
-            let newValue = parseFloat(currentValue)  + parseFloat(num.textContent) / cnt;
-            cnt *= 10;
-            total.textContent = formatNumber(newValue)
-            btn = 0;
+                let newValue = parseFloat(currentValue) + parseFloat(num.textContent) / cnt;
+                cnt *= 10;
+                total.textContent = formatNumber(newValue)
+                btn = 0;
             }
         }
     }
@@ -85,9 +84,9 @@ function addval() { //足し算
     flg = true;
     cnt = 1;
     mark.textContent = plus.textContent;
-    if(j !== 1) {
-        if(btn === 0) {
-        valset();
+    if (j !== 1) {
+        if (btn === 0) {
+            valset();
         }
         work = parseFloat(del(total.textContent));
         j = 1;
@@ -99,9 +98,9 @@ function minusval() { //引き算
     flg = true;
     cnt = 1;
     mark.textContent = minus.textContent;
-    if(j !== 2) {
-        if(btn === 0) {
-        valset();
+    if (j !== 2) {
+        if (btn === 0) {
+            valset();
         }
         work = parseFloat(del(total.textContent));
         j = 2;
@@ -113,9 +112,9 @@ function multival() { //掛け算
     flg = true;
     cnt = 1;
     mark.textContent = multi.textContent;
-    if(j !== 3) {
-        if(btn === 0) {
-        valset();
+    if (j !== 3) {
+        if (btn === 0) {
+            valset();
         }
         work = parseFloat(del(total.textContent));
         j = 3;
@@ -127,9 +126,9 @@ function divisionval() { //掛け算
     flg = true;
     cnt = 1;
     mark.textContent = division.textContent;
-    if(j !== 4) {
-        if(btn === 0) {
-        valset();
+    if (j !== 4) {
+        if (btn === 0) {
+            valset();
         }
         work = parseFloat(del(total.textContent));
         j = 4;
@@ -138,13 +137,13 @@ function divisionval() { //掛け算
 }
 
 function output() { //=を押した時
-    if(j === 1) {
+    if (j === 1) {
         total.textContent = formatNumber(work + parseFloat(del(total.textContent)));
-    } else if(j === 2) {
+    } else if (j === 2) {
         total.textContent = formatNumber(work - parseFloat(del(total.textContent)));
-    } else if(j === 3) {
+    } else if (j === 3) {
         total.textContent = formatNumber(work * parseFloat(del(total.textContent)));
-    } else if(j === 4) {
+    } else if (j === 4) {
         total.textContent = formatNumber(work / parseFloat(del(total.textContent)));
     } else {
         // work = parseFloat(del(total.textContent));
@@ -156,21 +155,21 @@ function output() { //=を押した時
 }
 
 function valset() { //🟰を押す前に他の計算記号を押した時
-    if(j === 1) {
+    if (j === 1) {
         total.textContent = formatNumber(work + parseFloat(del(total.textContent)));
     }
-    else if(j === 2) {
+    else if (j === 2) {
         total.textContent = formatNumber(work - parseFloat(del(total.textContent)));
-    } 
-    else if(j === 3) {
+    }
+    else if (j === 3) {
         total.textContent = formatNumber(work * parseFloat(del(total.textContent)));
     }
-    else if(j === 4) {
+    else if (j === 4) {
         total.textContent = formatNumber(work / parseFloat(del(total.textContent)));
-    } 
+    }
 }
 
-function changeval (number) { //+/-を押した時
+function changeval(number) { //+/-を押した時
     number = -(number);
     total.textContent = number;
 }
@@ -180,69 +179,69 @@ function percentval(number) {
     total.textContent = number;
 }
 
-num1.addEventListener('click', function() {
+num1.addEventListener('click', function () {
     calculator(num1);
 })
-num2.addEventListener('click', function() {
+num2.addEventListener('click', function () {
     calculator(num2);
 })
-num3.addEventListener('click', function() {
+num3.addEventListener('click', function () {
     calculator(num3);
 })
-num4.addEventListener('click', function() {
+num4.addEventListener('click', function () {
     calculator(num4);
 })
-num5.addEventListener('click', function() {
+num5.addEventListener('click', function () {
     calculator(num5);
 })
-num6.addEventListener('click', function() {
+num6.addEventListener('click', function () {
     calculator(num6);
 })
-num7.addEventListener('click', function() {
+num7.addEventListener('click', function () {
     calculator(num7);
 })
-num8.addEventListener('click', function() {
+num8.addEventListener('click', function () {
     calculator(num8);
 })
-num9.addEventListener('click', function() {
+num9.addEventListener('click', function () {
     calculator(num9);
 })
-num0.addEventListener('click', function() {
+num0.addEventListener('click', function () {
     calculator(num0);
 })
 
-plus.addEventListener('click', function() {//+ボタン
+plus.addEventListener('click', function () {//+ボタン
     addval();
 })
 
-minus.addEventListener('click', function() {//-ボタン
+minus.addEventListener('click', function () {//-ボタン
     minusval();
 })
 
-multi.addEventListener('click', function() {//×ボタン
+multi.addEventListener('click', function () {//×ボタン
     multival();
 })
 
-division.addEventListener('click', function() {//÷ボタン
+division.addEventListener('click', function () {//÷ボタン
     divisionval();
 })
 
-AC.addEventListener('click', function() {//クリアボタン
+AC.addEventListener('click', function () {//クリアボタン
     cler();
 })
 
-rtnValue.addEventListener('click', function() {//イコールボタン
+rtnValue.addEventListener('click', function () {//イコールボタン
     output();
 })
 
-change.addEventListener('click', function() {//+/-ボタン
+change.addEventListener('click', function () {//+/-ボタン
     changeval(parseFloat(total.textContent));
 })
 
-percent.addEventListener('click', function() {//%ボタン
+percent.addEventListener('click', function () {//%ボタン
     percentval(parseFloat(total.textContent));
 })
 
-point.addEventListener('click', function() {//.ボタン
+point.addEventListener('click', function () {//.ボタン
     pointval();
 })
