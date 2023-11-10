@@ -9,7 +9,7 @@ body {
 
 #main {
     text-align: center;
-    background-color: #fff;
+    background-color: #000000;
     border-radius: 20px;
     width: 480px;
     height: 650px;
@@ -26,6 +26,7 @@ body {
 #total span {
     padding-right: 0.5em;
     font-size: 50px;
+    color: #ffffff;
 }
 
 #total p {
@@ -42,11 +43,11 @@ table {
 }
 
 table td {
-    width: 90px;
-    height: 90px;
+    width: 85px;
+    height: 85px;
     background-color: #40cdf4;
-    border-radius: 50%;
-    padding: 5px;
+    border-radius: 60%;
+    padding: 7px;
     cursor: pointer;
 }
 
@@ -64,4 +65,8 @@ table td.symbol:hover {
 
 table td#td0 {
     border-radius: 80px;
+}
+
+p {
+    color: #ffffff;
 }
