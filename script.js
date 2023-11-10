@@ -2,6 +2,7 @@ let j = 0;
 let work = 0;
 let flg = false;
 let btn = 0;
+let k = 0;
 let cnt = 1;
 let num0 = document.querySelector('#td0');
 let num1 = document.querySelector('#td1');
@@ -37,10 +38,11 @@ function del(number) { //カンマを削除
 
 function calculator(num) { //入力した値をspanに表示
     let currentValue = del(total.textContent);
-    if ((currentValue === '0' || flg === true) && cnt === 1) { //1桁目を表示
+    if ((currentValue === '0' || flg === true || k === 1) && cnt === 1) { //1桁目を表示
         total.textContent = num.textContent;
         flg = false;
         btn = 0;
+        k = 0;
     } else {
         if (cnt === 1) { //少数点がない時に桁上がりしながら表示
             let newValue = parseFloat(currentValue) * 10 + parseFloat(num.textContent);
@@ -78,6 +80,7 @@ function cler() { //入力した情報をクリア
     btn = 0;
     cnt = 1;
     mark.textContent = '';
+    k = 0;
 }
 
 function addval() { //足し算
@@ -152,6 +155,7 @@ function output() { //=を押した時
     btn = 0;
     cnt = 1;
     mark.textContent = '';
+    k = 1;
 }
 
 function valset() { //🟰を押す前に他の計算記号を押した時
